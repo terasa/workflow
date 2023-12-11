@@ -35,6 +35,12 @@ jobs:
     steps:
       - name: Run a one-line script
         run: echo Hello, world!
+  lint2:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
   updateTask:
     needs: build
     runs-on: ubuntu-latest
@@ -42,7 +48,7 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
   docker_build_and_push:
-    needs: [test, lint]
+    needs: [test, lint, lint2]
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
